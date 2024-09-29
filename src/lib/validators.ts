@@ -59,8 +59,15 @@ export const url: Validator<string> = (value) => {
   return { url: "URL is not valid" };
 };
 
-export const number: Validator<string> = (value) => {
+export const digits: Validator<string> = (value) => {
   if (/^[0-9]+$/.test(value)) {
+    return null;
+  }
+  return { digits: {} };
+};
+
+export const number: Validator = (value) => {
+  if (/^-?[0-9]+(\.[0-9]+)?$/.test(value)) {
     return null;
   }
   return { number: {} };
